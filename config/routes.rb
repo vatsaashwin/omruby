@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   	get "signin" => 'devise/sessions#new'
   	delete "signout" => 'devise/sessions#destroy'
   	get 'signup' => 'devise/registrations#new'
+    get "tweets" => 'tweets'
+    get "events" => 'events'
+
   end
   #get 'pages/home'
   root 'pages#home'
