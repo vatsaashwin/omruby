@@ -12,21 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :eventkey_id %>
-    <%= form.text_field :eventkey_id %>
-  </div>
-
-  <div class="field">
     <%= form.label :event %>
     <%= form.text_field :event %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit' , class: "btn btn-info" %>
   </div>
 <% end %>
