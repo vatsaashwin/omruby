@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    @event = current_user.items.new
   end
 
   # GET /events/1/edit
@@ -21,38 +21,31 @@ class EventsController < ApplicationController
   end
 
   # POST /events
-  # POST /events.json
   def create
     @event = Event.new(event_params)
 
-    respond_to do |format|
       if @event.save
         redirect_to @event, notice: 'Event was successfully created.' 
       else
         render :new 
       end
-    end
   end
 
   # PATCH/PUT /events/1
   def update
     @event = Event.find(params[:id])
-    respond_to do |format|
       if @event.update(event_params)
         redirect_to @event, notice: 'Event was successfully updated.' 
       else
         render :edit 
       end
-    end
   end
 
   # DELETE /events/1
   def destroy
     @event.destroy
     @event = Event.find(params[:id])
-    respond_to do |format|
       redirect_to events_url, notice: 'Event was successfully destroyed.' 
-    end
   end
 
   private
