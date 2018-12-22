@@ -17,12 +17,12 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+    @event = current_user.items.find(params[:id])
   end
 
   # POST /events
   def create
-    @event = Event.new(event_params)
+    @event = current_user.items.new(event_params)
 
       if @event.save
         redirect_to @event, notice: 'Event was successfully created.' 
@@ -33,7 +33,7 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   def update
-    @event = Event.find(params[:id])
+    @event = current_user.items.find(params[:id])
       if @event.update(event_params)
         redirect_to @event, notice: 'Event was successfully updated.' 
       else
@@ -44,7 +44,7 @@ class EventsController < ApplicationController
   # DELETE /events/1
   def destroy
     @event.destroy
-    @event = Event.find(params[:id])
+    @event = current_user.items.find(params[:id])
       redirect_to events_url, notice: 'Event was successfully destroyed.' 
   end
 
@@ -52,6 +52,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:eventkey_id, :event, :description)
+      params.require(:event).permit(:event, :description)
     end
 end
