@@ -23,15 +23,14 @@
               <%= link_to tweet, class:"list-group-item list-group-item-action" do %>
                 <h5 class="list-group-item-heading"><%= tweet.user.email %></h5>
                 <p class="list-group-item-text"><%= tweet.content %></p>
-
                   <% if tweet.user == current_user %> 
                     <%= link_to 'Update', edit_tweet_path(tweet) %>
                     <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
                   <% end %>
-                
               <% end %>
           <% end %>
       </ul>
+      
     </div>
   </div>
 </div>
